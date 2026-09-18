@@ -68,7 +68,88 @@ h1,h2{
 </head>
 
 
-<body>
+<div id="cart" style="margin:30px;padding:20px;background:#101722;border-radius:15px;">
+<h2>🛒 سبد خرید</h2>
+
+<div id="cartItems">
+سبد خرید خالی است
+</div>
+
+<h3 id="total">جمع: ۰ تومان</h3>
+
+</div>
+
+
+<script>
+
+let cart = [];
+
+function addToCart(name, price){
+
+cart.push({
+name:name,
+price:price
+});
+
+showCart();
+
+}
+
+
+function removeItem(index){
+
+cart.splice(index,1);
+
+showCart();
+
+}
+
+
+function showCart(){
+
+let box=document.getElementById("cartItems");
+
+let total=0;
+
+
+if(cart.length==0){
+
+box.innerHTML="سبد خرید خالی است";
+
+}
+else{
+
+box.innerHTML="";
+
+cart.forEach((item,index)=>{
+
+total += item.price;
+
+
+box.innerHTML += 
+<p>
+${item.name} - ${item.price.toLocaleString()} تومان
+
+<button onclick="removeItem(${index})">
+حذف
+</button>
+
+</p>
+;
+
+});
+
+
+}
+
+
+document.getElementById("total").innerHTML =
+"جمع: "+total.toLocaleString()+" تومان";
+
+
+}
+
+</script><body>
 
 
 <header>
