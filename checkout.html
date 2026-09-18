@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ثبت سفارش | SHAYAN.CPU</title>
+
+
+<style>
+
+body{
+    margin:0;
+    font-family:Tahoma;
+    background:#070b12;
+    color:white;
+    text-align:center;
+}
+
+
+.container{
+
+    width:90%;
+    max-width:500px;
+    margin:40px auto;
+    background:#101722;
+    padding:25px;
+    border-radius:15px;
+    border:1px solid #008cff;
+
+}
+
+
+h1{
+    color:#00aaff;
+}
+
+
+input,textarea{
+
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border-radius:10px;
+    border:none;
+    font-family:Tahoma;
+
+}
+
+
+textarea{
+
+height:100px;
+
+}
+
+
+button{
+
+background:#008cff;
+color:white;
+border:none;
+padding:15px 30px;
+border-radius:10px;
+cursor:pointer;
+font-size:16px;
+
+}
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<h1>
+ثبت سفارش
+</h1>
+
+
+<p>
+SHAYAN.CPU
+</p>
+
+
+
+<input id="name" placeholder="نام و نام خانوادگی">
+
+
+<input id="phone" placeholder="شماره تماس">
+<input id="address" placeholder="آدرس کامل">
+
+
+<textarea id="note" placeholder="توضیحات سفارش"></textarea>
+
+
+
+<button onclick="sendOrder()">
+
+ارسال سفارش
+
+</button>
+
+
+
+</div>
+
+
+
+<script>
+
+
+function sendOrder(){
+
+
+let name =
+document.getElementById("name").value;
+
+
+let phone =
+document.getElementById("phone").value;
+
+
+let address =
+document.getElementById("address").value;
+
+
+let note =
+document.getElementById("note").value;
+
+
+
+let message =
+
+"سلام SHAYAN.CPU%0A%0A"+
+"سفارش جدید:%0A"+
+"نام: "+name+"%0A"+
+"شماره: "+phone+"%0A"+
+"آدرس: "+address+"%0A"+
+"توضیحات: "+note;
+
+
+
+let whatsapp = "989xxxxxxxxx";
+
+
+
+window.open(
+
+"https://wa.me/"+whatsapp+"?text="+message
+
+);
+
+
+}
+
+
+</script>
+
+
+
+</body>
+
+</html>
