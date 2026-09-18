@@ -2,10 +2,12 @@
 <html lang="fa" dir="rtl">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>لوازم جانبی | SHAYAN.CPU</title>
+
 
 <style>
 
@@ -17,14 +19,11 @@ body{
     text-align:center;
 }
 
-header{
-    padding:40px;
-    background:#101722;
-}
 
 h1,h2{
     color:#00aaff;
 }
+
 
 .products{
     display:flex;
@@ -34,6 +33,7 @@ h1,h2{
     padding:30px;
 }
 
+
 .card{
     width:250px;
     background:#101722;
@@ -42,134 +42,50 @@ h1,h2{
     padding:15px;
 }
 
+
 .card img{
     width:100%;
+    height:220px;
+    object-fit:cover;
     border-radius:12px;
 }
+
 
 .price{
     color:#00ff88;
     font-size:20px;
-    font-weight:bold;
 }
 
-.btn{
-    display:inline-block;
+
+button{
     background:#008cff;
     color:white;
-    padding:12px 25px;
+    border:none;
+    padding:12px 20px;
     border-radius:10px;
-    text-decoration:none;
-    margin-top:10px;
+    cursor:pointer;
 }
+
+
+#cart{
+    margin:30px;
+    padding:20px;
+    background:#101722;
+    border-radius:15px;
+}
+
 
 </style>
 
 </head>
+<body>
 
-<div id="cart" style="margin:30px;padding:20px;background:#101722;border-radius:15px;">
-<h2>🛒 سبد خرید</h2>
-
-<div id="cartItems">
-سبد خرید خالی است
-</div>
-
-<h3 id="total">جمع: ۰ تومان</h3>
-
-</div>
-
-
-<script>
-
-let cart = [];
-
-function addToCart(name, price){
-
-cart.push({
-name:name,
-price:price
-});
-
-showCart();
-
-}
-
-
-function removeItem(index){
-
-cart.splice(index,1);
-
-showCart();
-
-}
-
-
-function showCart(){
-
-let box=document.getElementById("cartItems");
-
-let total=0;
-
-
-if(cart.length==0){
-
-box.innerHTML="سبد خرید خالی است";
-
-}
-else{
-
-box.innerHTML="";
-
-cart.forEach((item,index)=>{
-
-total += item.price;
-
-
-box.innerHTML += 
-<p>
-${item.name} - ${item.price.toLocaleString()} تومان
-
-<button onclick="removeItem(${index})">
-حذف
-</button>
-
-</p>
-;
-
-});
-
-
-}
-
-
-document.getElementById("total").innerHTML =
-"جمع: "+total.toLocaleString()+" تومان";
-
-
-}
-
-</script>
-<button class="btn" onclick="addToCart('قاب موبایل',300000)">
-افزودن به سبد خرید
-</button>
-    <body>
-
-
-<header>
 
 <h1>لوازم جانبی موبایل</h1>
-
-<p>خرید انواع لوازم جانبی موبایل</p>
-
-</header>
-
 
 
 <div class="products">
 
-
-
-<!-- محصول ۱ -->
 
 <div class="card">
 
@@ -177,18 +93,15 @@ document.getElementById("total").innerHTML =
 
 <h2>شارژر فست</h2>
 
-<p class="price">۵۰۰,۰۰۰ تومان</p>
+<p class="price">500000 تومان</p>
 
-<button class="btn" onclick="addToCart('شارژر فست',500000)">
+<button onclick="addToCart('شارژر فست',500000)">
 افزودن به سبد خرید
 </button>
- 
- 
+
 </div>
 
 
-
-<!-- محصول ۲ -->
 
 <div class="card">
 
@@ -196,16 +109,16 @@ document.getElementById("total").innerHTML =
 
 <h2>کابل شارژ</h2>
 
-<p class="price">۲۰۰,۰۰۰ تومان</p>
+<p class="price">200000 تومان</p>
 
-   <button class="btn" onclick="addToCart('کابل شارژ',200000)">
+<button onclick="addToCart('کابل شارژ',200000)">
 افزودن به سبد خرید
 </button>
+
 </div>
 
 
 
-<!-- محصول ۳ -->
 
 <div class="card">
 
@@ -213,14 +126,110 @@ document.getElementById("total").innerHTML =
 
 <h2>قاب موبایل</h2>
 
-<p class="price">۳۰۰,۰۰۰ تومان</p>
+<p class="price">300000 تومان</p>
 
-
-<button class="btn" onclick="addToCart('قاب موبایل',300000)">
+<button onclick="addToCart('قاب موبایل',300000)">
 افزودن به سبد خرید
 </button>
+
+</div>
+
+
 </div>
 
 
 
+<div id="cart">
+
+<h2>🛒 سبد خرید</h2>
+
+
+<div id="cartItems">
+    سبد خرید خالی است
 </div>
+
+
+<h3 id="total">
+جمع: 0 تومان
+</h3>
+
+
+</div>
+
+
+
+<script>
+
+
+let cart=[];
+
+
+function addToCart(name,price){
+
+
+cart.push({
+
+name:name,
+
+price:price
+
+});
+
+
+showCart();
+
+
+}
+
+
+
+function showCart(){
+
+
+let items=document.getElementById("cartItems");
+
+let total=document.getElementById("total");
+
+
+items.innerHTML="";
+
+
+let sum=0;
+
+
+
+cart.forEach(function(product,index){
+
+
+items.innerHTML += 
+"<p>"+product.name+" - "+product.price.toLocaleString()+" تومان</p>";
+
+
+sum += product.price;
+
+
+});
+
+
+
+if(cart.length==0){
+
+items.innerHTML="سبد خرید خالی است";
+
+}
+
+
+
+total.innerHTML="جمع: "+sum.toLocaleString()+" تومان";
+
+
+}
+
+
+</script>
+
+
+
+</body>
+
+</html>
