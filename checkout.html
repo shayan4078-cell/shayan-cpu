@@ -154,9 +154,9 @@ let whatsapp = "989012384436";
 
 
 
-window.open(
+let url = "https://wa.me/" + whatsapp + "?text=" + message;
 
-"https://wa.me/"+whatsapp+"?text="+message
+window.location.href = url;
 
 );
 
