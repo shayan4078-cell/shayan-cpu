@@ -2,171 +2,151 @@
 <html lang="fa" dir="rtl">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>ثبت سفارش | SHAYAN.CPU</title>
 
-
 <style>
 
 body{
     margin:0;
-    font-family:Tahoma;
+    font-family:Tahoma,Arial,sans-serif;
     background:#070b12;
     color:white;
     text-align:center;
 }
 
-
 .container{
-
     width:90%;
     max-width:500px;
     margin:40px auto;
-    background:#101722;
     padding:25px;
-    border-radius:15px;
+    background:#101722;
     border:1px solid #008cff;
-
+    border-radius:15px;
 }
-
 
 h1{
     color:#00aaff;
 }
 
-
-input,textarea{
-
+input,
+textarea{
     width:100%;
-    padding:12px;
-    margin:10px 0;
+    padding:13px;
+    margin:8px 0;
+    box-sizing:border-box;
+    border:0;
     border-radius:10px;
-    border:none;
     font-family:Tahoma;
-
 }
-
 
 textarea{
-
-height:100px;
-
+    height:100px;
 }
-
 
 button{
-
-background:#008cff;
-color:white;
-border:none;
-padding:15px 30px;
-border-radius:10px;
-cursor:pointer;
-font-size:16px;
-
+    width:100%;
+    margin-top:15px;
+    padding:14px;
+    background:#008cff;
+    color:white;
+    border:0;
+    border-radius:10px;
+    font-family:Tahoma;
+    font-size:16px;
+    cursor:pointer;
 }
-
 
 </style>
 
-
 </head>
-
 
 <body>
 
-
 <div class="container">
 
+<h1>ثبت سفارش</h1>
 
-<h1>
-ثبت سفارش
-</h1>
+<p>SHAYAN.CPU</p>
 
+<input
+id="name"
+type="text"
+placeholder="نام و نام خانوادگی"
+>
+<input
+id="phone"
+type="tel"
+placeholder="شماره تماس"
+>
 
-<p>
-SHAYAN.CPU
-</p>
+<textarea
+id="address"
+placeholder="آدرس کامل"
+></textarea>
 
+<textarea
+id="note"
+placeholder="توضیحات سفارش"
+></textarea>
 
-
-<input id="name" placeholder="نام و نام خانوادگی">
-
-
-<input id="phone" placeholder="شماره تماس">
-<input id="address" placeholder="آدرس کامل">
-
-
-<textarea id="note" placeholder="توضیحات سفارش"></textarea>
-
-
-
-<button onclick="sendOrder()">
-
-ارسال سفارش
-
+<button type="button" onclick="sendOrder()">
+ثبت سفارش در واتساپ
 </button>
-
-
 
 </div>
 
 
-
 <script>
-
 
 function sendOrder(){
 
+let name = document.getElementById("name").value.trim();
 
-let name =
-document.getElementById("name").value;
+let phone = document.getElementById("phone").value.trim();
 
+let address = document.getElementById("address").value.trim();
 
-let phone =
-document.getElementById("phone").value;
-
-
-let address =
-document.getElementById("address").value;
+let note = document.getElementById("note").value.trim();
 
 
-let note =
-document.getElementById("note").value;
+if(name === ""  phone === ""  address === ""){
 
+alert("لطفاً نام، شماره تماس و آدرس را وارد کنید.");
 
-
-let message =
-
-"سلام SHAYAN.CPU%0A%0A"+
-"سفارش جدید:%0A"+
-"نام: "+name+"%0A"+
-"شماره: "+phone+"%0A"+
-"آدرس: "+address+"%0A"+
-"توضیحات: "+note;
-
-
-
-let whatsapp = "989012384436";
-
-
-
-let url = "https://wa.me/" + whatsapp + "?text=" + message;
-
-window.location.href = url;
-
-);
-
+return;
 
 }
 
 
+/* شماره واتساپ خودت را اینجا وارد کن */
+
+let whatsapp = "989012384436";
+
+
+let message =
+"سلام SHAYAN.CPU\n\n" +
+"سفارش جدید\n\n" +
+"نام: " + name + "\n" +
+"شماره تماس: " + phone + "\n" +
+"آدرس: " + address + "\n" +
+"توضیحات: " + note;
+
+
+let url =
+"https://wa.me/" +
+whatsapp +
+"?text=" +
+encodeURIComponent(message);
+
+
+window.location.href = url;
+
+}
+
 </script>
-
-
 
 </body>
 
