@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SHAYAN.CPU | فروشگاه تخصصی موبایل و کامپیوتر</title>
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+:root{--b:#087cf0;--d:#06182c;--d2:#071426;--bg:#f4f7fb;--t:#172033}
+body{margin:0;background:var(--bg);color:var(--t);font-family:Tahoma,Arial,sans-serif}
+a{text-decoration:none;color:inherit}.wrap{width:min(1200px,94%);margin:auto}
+.top{height:38px;background:#06182c;color:#fff;font-size:11px}.top .wrap{height:100%;display:flex;align-items:center;justify-content:space-between}
+.header{background:#fff}.head{min-height:88px;display:flex;align-items:center;gap:25px}.logo{display:flex;align-items:center;gap:10px;min-width:245px}
+.logoIcon{width:49px;height:49px;border:3px solid var(--b);border-radius:12px;position:relative;box-shadow:0 0 18px #087cf044}.logoIcon:before{content:"";position:absolute;inset:10px;border:3px solid var(--b);border-radius:5px}.logoIcon:after{content:"";position:absolute;left:4px;right:4px;top:20px;border-top:3px dashed var(--b)}
+.logo b{font-size:25px}.logo small{display:block;color:#777;font-size:10px}
+.search{flex:1;position:relative}.search input{width:100%;height:48px;border:1px solid #e0e7f0;border-radius:13px;background:#f7f9fc;padding:0 48px 0 15px;font-family:inherit}.search button{position:absolute;right:6px;top:6px;width:37px;height:36px;border:0;border-radius:9px;background:var(--d);color:#fff;font-size:19px}
+.headLinks{display:flex;gap:18px;text-align:center;font-size:12px}.headLinks b{display:block;margin-top:5px}.cartNum{background:#ed3158;color:#fff;border-radius:20px;padding:2px 7px;position:absolute;margin:-7px -4px;font-size:9px}
+.nav{background:#061b32;color:#fff}.nav .wrap{display:flex;gap:3px;overflow:auto}.nav a{padding:15px 16px;font-size:12px;white-space:nowrap}.nav a:hover,.nav .active{background:var(--b);border-radius:6px;margin:7px 0;padding-top:8px;padding-bottom:8px}
+.hero{margin:18px 0;border-radius:18px;min-height:340px;overflow:hidden;position:relative;color:#fff;background:radial-gradient(circle at 76% 45%,#36a8ff55,transparent 23%),linear-gradient(115deg,#03101e,#083764 60%,#061528)}
+.heroText{padding:55px 6%;position:relative;z-index:2;max-width:700px}.heroText h1{font-size:43px;margin:12px 0}.heroText p{font-size:18px;line-height:2;color:#dcecff}.btn{display:inline-block;background:var(--b);color:#fff;border:0;border-radius:10px;padding:13px 22px;font-family:inherit;cursor:pointer}
+.chip{position:absolute;right:12%;top:58px;width:275px;height:220px;border-radius:28px;transform:rotate(-8deg);background:linear-gradient(145deg,#dce4ec,#566879);box-shadow:0 30px 50px #0008}.chip:before{content:"intel";position:absolute;right:25px;top:32px;color:#304252;font-size:34px;font-weight:bold}.chip:after{content:"CORE";position:absolute;right:48px;top:88px;color:#eef3f7;font-size:43px;font-weight:bold}
+.features,.cats,.products{display:grid;gap:13px}.features{grid-template-columns:repeat(6,1fr)}.feature,.cat,.product{background:#fff;border:1px solid #e6edf5;border-radius:14px;box-shadow:0 4px 16px #15304a0b}.feature{text-align:center;padding:19px 8px}.feature .i{font-size:29px}.feature b{display:block;font-size:12px;margin:9px 0}.feature small,.cat small{color:#77808d;font-size:10px}
+.title{display:flex;align-items:center;justify-content:space-between;margin:32px 0 15px}.title h2{font-size:22px;margin:0}.title a{color:var(--b);font-size:12px}
+.cats{grid-template-columns:repeat(6,1fr)}.cat{text-align:center;padding:14px}.cat .pic{height:95px;display:grid;place-items:center;font-size:48px}.cat b{font-size:12px}
+.banners{display:grid;grid-template-columns:1fr 1fr;gap:17px;margin-top:18px}.banner{min-height:150px;border-radius:16px;padding:27px 30px;color:#fff;background:linear-gradient(120deg,#06182c,#0a5aa8);position:relative;overflow:hidden}.banner:nth-child(2){background:linear-gradient(120deg,#111c2e,#16446e)}.banner h3{font-size:21px;margin:0 0 7px}.banner p{color:#d8e8f7;margin:0 0 17px}.mini{display:inline-block;background:var(--b);padding:9px 15px;border-radius:8px;font-size:11px}
+.products{grid-template-columns:repeat(6,1fr)}.product{padding:11px;position:relative}.pimg{height:150px;border-radius:10px;background:linear-gradient(145deg,#eef3f8,#d8e2ed);display:grid;place-items:center;font-size:57px}.heart{position:absolute;left:9px;top:8px;color:#9ca6b3}.product h3{font-size:12px;line-height:1.8;height:43px;margin:8px 0}.stars{color:#f2a400;font-size:10px}.price{font-weight:bold;margin:8px 0 10px;font-size:13px}.add{width:100%;border:0;background:var(--b);color:#fff;border-radius:8px;padding:10px;font-family:inherit;cursor:pointer;font-size:11px}
+.why{margin-top:30px;background:#edf6ff;border-radius:18px;padding:25px}.whygrid{display:grid;grid-template-columns:1.2fr repeat(4,1fr);gap:15px;align-items:center}.why h2{margin:0}.whyitem{text-align:center}.whyitem .i{font-size:28px}.whyitem b{display:block;font-size:12px;margin:7px}.whyitem small{font-size:10px;color:#777}
+.lower{display:grid;grid-template-columns:1fr 1fr;gap:17px;margin-top:30px}.service{padding:28px;border-radius:16px;background:linear-gradient(120deg,#06182c,#0b355c);color:#fff}.service h2{margin-top:0}.service p{color:#d9e7f4;line-height:2}.brands{background:#fff;border-radius:16px;display:flex;justify-content:space-around;align-items:center;flex-wrap:wrap;padding:30px;font-size:20px;font-weight:bold;color:#263445}.brands span{opacity:.7}
+.subscribe{margin-top:30px;border-radius:16px;padding:25px;background:linear-gradient(120deg,#06182c,#0a3d70);color:#fff;display:flex;justify-content:space-between;align-items:center;gap:20px}.subscribe input{padding:13px;border:0;border-radius:8px;width:300px;font-family:inherit}.subscribe button{padding:13px 18px;border:0;border-radius:8px;background:var(--b);color:#fff;font-family:inherit}
+footer{background:#06182c;color:#d3e0ee;margin-top:35px;padding:38px 0 15px}.foot{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}.foot h3{color:#fff}.foot a{display:block;color:#aebfd0;font-size:12px;margin:11px 0}.copy{border-top:1px solid #ffffff18;text-align:center;padding-top:15px;margin-top:25px;font-size:10px;color:#8ca0b5}
+.overlay{display:none;position:fixed;inset:0;background:#0009;z-index:20;padding:20px;overflow:auto}.modal{background:#fff;max-width:700px;margin:30px auto;border-radius:18px;padding:24px}.modal h2{margin-top:0;color:var(--b)}.cartrow{display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid #e5e7eb;padding:13px 0}.qty button{border:0;background:var(--b);color:#fff;width:30px;height:30px;border-radius:6px}.form input,.form textarea{width:100%;margin:7px 0;padding:13px;border:1px solid #ddd;border-radius:9px;font-family:inherit}.form textarea{height:90px}.close{background:#eee;color:#222}.empty{text-align:center;padding:30px;color:#777}
+@media(max-width:900px){.features,.cats{grid-template-columns:repeat(3,1fr)}.products{grid-template-columns:repeat(3,1fr)}.chip{opacity:.25}.logo{min-width:auto}.headLinks{gap:8px}}
+@media(max-width:650px){.top .wrap{font-size:8px}.head{flex-wrap:wrap;padding:10px 0}.logo{width:100%}.search{flex-basis:100%;order:3}.headLinks{position:absolute;left:4%;top:48px}.heroText{padding:35px 22px}.heroText h1{font-size:29px}.chip{width:190px;height:150px;top:155px;right:20%}.features,.cats{grid-template-columns:repeat(2,1fr)}.banners,.lower{grid-template-columns:1fr}.products{grid-template-columns:repeat(2,1fr)}.whygrid{grid-template-columns:1fr 1fr}.why h2{grid-column:1/-1}.subscribe{flex-direction:column;align-items:stretch}.subscribe input{width:100%}.foot{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<div class="top"><div class="wrap"><span>🚚 ارسال سریع به سراسر کشور</span><span>🛡️ ضمانت اصالت کالا</span><span>🎧 پشتیبانی ۲۴ ساعته</span><span>به فروشگاه SHAYAN.CPU خوش آمدید</span></div></div>
+
+<header class="header"><div class="wrap head">
+<a class="logo" href="#home"><div class="logoIcon"></div><div><b>SHAYAN.CPU</b><small>Mobile & Computer Parts Store</small></div></a>
+<div class="search"><input id="search" oninput="searchProducts()" placeholder="جستجوی محصول، برند یا دسته‌بندی..."><button>⌕</button></div>
+<div class="headLinks"><a href="#about">♙<b>حساب کاربری</b></a><a href="#" onclick="openCart();return false">🛒<span class="cartNum" id="cartNum">0</span><b>سبد خرید</b></a></div>
+</div></header>
+
+<nav class="nav"><div class="wrap">
+<a class="active" href="#home">خانه</a><a href="#cats">گروه کالاها</a><a href="#products">قطعات موبایل</a><a href="#products">تجهیزات جانبی</a><a href="#repair">ابزار تعمیرات</a><a href="#repair">خدمات تعمیرات</a><a href="#about">درباره ما</a><a href="#contact">تماس با ما</a>
+</div></nav>
+
+<main class="wrap" id="home">
+<section class="hero"><div class="chip"></div><div class="heroText"><strong style="color:#55b9ff">SHAYAN.CPU</strong><h1>کیفیت بالا، قیمت مناسب</h1><p>از قطعات اورجینال تا ابزارهای حرفه‌ای تعمیرات موبایل و کامپیوتر</p><a class="btn" href="#products">مشاهده محصولات ←</a></div></section>
+
+<section class="features">
+<div class="feature"><div class="i">🛡️</div><b>تضمین اصالت کالا</b><small>همه محصولات اورجینال</small></div><div class="feature"><div class="i">🚚</div><b>ارسال سریع</b><small>به سراسر کشور</small></div><div class="feature"><div class="i">🎧</div><b>پشتیبانی تخصصی</b><small>مشاوره قبل از خرید</small></div><div class="feature"><div class="i">💳</div><b>قیمت منصفانه</b><small>بدون واسطه</small></div><div class="feature"><div class="i">🔧</div><b>تعمیرات تخصصی</b><small>تعمیر برد و موبایل</small></div><div class="feature"><div class="i">⚡</div><b>خرید آسان</b><small>ثبت سفارش سریع</small></div>
+</section>
+
+<div class="title" id="cats"><h2>دسته‌بندی محصولات</h2><a href="#products">مشاهده همه محصولات ←</a></div>
+<section class="cats">
+<a class="cat" href="#products"><div class="pic">🔩</div><b>CPU و مادربرد</b><small>مشاهده محصولات ›</small></a><a class="cat" href="#products"><div class="pic">🖥️</div><b>قطعات کامپیوتر</b><small>مشاهده محصولات ›</small></a><a class="cat" href="#products"><div class="pic">📱</div><b>قطعات و لوازم موبایل</b><small>مشاهده محصولات ›</small></a><a class="cat" href="#products"><div class="pic">📲</div><b>موبایل و تبلت</b><small>مشاهده محصولات ›</small></a><a class="cat" href="#products"><div class="pic">🧰</div><b>تجهیزات جانبی</b><small>مشاهده محصولات ›</small></a><a class="cat" href="#repair"><div class="pic">🛠️</div><b>ابزار و تجهیزات تعمیرات</b><small>مشاهده محصولات ›</small></a>
+</section>
+
+<section class="banners"><div class="banner"><h3>قطعات اورجینال موبایل</h3><p>با بهترین قیمت بازار</p><a class="mini" href="#products">مشاهده محصولات</a></div><div class="banner"><h3>قطعات کامپیوتر و لپ‌تاپ</h3><p>برای حرفه‌ای‌ها</p><a class="mini" href="#products">مشاهده محصولات</a></div></section>
+
+<div class="title" id="products"><h2>🔥 پرفروش‌ترین محصولات</h2><a href="#products">مشاهده همه ›</a></div>
+<section class="products" id="productGrid">
+<div class="product"><span class="heart">♡</span><div class="pimg">🔧</div><h3>ست پیچ‌گوشتی ۲۳ عددی حرفه‌ای</h3><div class="stars">★★★★★</div><div class="price">۱,۲۵۰,۰۰۰ تومان</div><button class="add" onclick="addCart('ست پیچ‌گوشتی ۲۳ عددی',1250000)">🛒 افزودن به سبد خرید</button></div>
+<div class="product"><span class="heart">♡</span><div class="pimg">🧠</div><h3>پردازنده Intel Core i5</h3><div class="stars">★★★★★</div><div class="price">۷,۸۰۰,۰۰۰ تومان</div><button class="add" onclick="addCart('پردازنده Intel Core i5',7800000)">🛒 افزودن به سبد خرید</button></div>
+<div class="product"><span class="heart">♡</span><div class="pimg">📱</div><h3>تاچ و ال سی دی موبایل</h3><div class="stars">★★★★★</div><div class="price">۲,۹۵۰,۰۰۰ تومان</div><button class="add" onclick="addCart('تاچ و ال سی دی موبایل',2950000)">🛒 افزودن به سبد خرید</button></div>
+<div class="product"><span class="heart">♡</span><div class="pimg">🎮</div><h3>کارت گرافیک ASUS RTX 3060</h3><div class="stars">★★★★★</div><div class="price">۱۷,۵۰۰,۰۰۰ تومان</div><button class="add" onclick="addCart('کارت گرافیک ASUS RTX 3060',17500000)">🛒 افزودن به سبد خرید</button></div>
+<div class="product"><span class="heart">♡</span><div class="pimg">🔋</div><h3>باتری موبایل Samsung A52</h3><div class="stars">★★★★★</div><div class="price">۹۶۰,۰۰۰ تومان</div><button class="add" onclick="addCart('باتری Samsung A52',960000)">🛒 افزودن به سبد خرید</button></div>
+<div class="product"><span class="heart">♡</span><div class="pimg">🔌</div><h3>شارژر فست شارژ ۲۵ وات</h3><div class="stars">★★★★★</div><div class="price">۴۸۰,۰۰۰ تومان</div><button class="add" onclick="addCart('شارژر فست شارژ ۲۵ وات',480000)">🛒 افزودن به سبد خرید</button></div>
+</section>
+
+<section class="why"><div class="whygrid"><h2>چرا SHAYAN.CPU؟</h2><div class="whyitem"><div class="i">🎯</div><b>انتخاب حرفه‌ای</b><small>محصولات تخصصی</small></div><div class="whyitem"><div class="i">🎧</div><b>پشتیبانی تخصصی</b><small>پاسخگویی سریع</small></div><div class="whyitem"><div class="i">💰</div><b>قیمت منصفانه</b><small>بدون واسطه</small></div><div class="whyitem"><div class="i">🚚</div><b>ارسال سریع</b><small>به سراسر کشور</small></div></div></section>
+
+<section class="lower" id="repair"><div class="service"><h2>SHAYAN.CPU | خدمات تعمیرات</h2><p>تعمیرات تخصصی موبایل، لپ‌تاپ و کامپیوتر با تمرکز بر عیب‌یابی برد و آموزش تعمیرات.</p><a class="btn" href="#contact">اطلاعات بیشتر</a></div><div class="brands"><span>Samsung</span><span>Apple</span><span>Xiaomi</span><span>ASUS</span><span>intel</span><span>AMD</span></div></section>
+
+<section class="subscribe" id="contact"><div><h2>در جریان تخفیف‌ها و محصولات جدید قرار بگیرید</h2><p>با عضویت در خبرنامه پیشنهادهای جدید را از دست ندهید.</p></div><div><input placeholder="ایمیل خود را وارد کنید"><button>عضویت</button></div></section>
+</main>
+
+<footer id="about"><div class="wrap foot"><div><h3>SHAYAN.CPU</h3><p>مرجع تخصصی قطعات موبایل، کامپیوتر و تجهیزات تعمیرات.</p></div><div><h3>لینک‌های سریع</h3><a href="#home">خانه</a><a href="#products">فروشگاه</a><a href="#repair">خدمات ما</a></div><div><h3>دسترسی سریع</h3><a href="#" onclick="openCart();return false">سبد خرید</a><a href="#products">محصولات</a><a href="#contact">تماس با ما</a></div><div><h3>تماس با ما</h3><a href="tel:09012384436">📞 09012384436</a><a href="https://wa.me/989012384436">واتساپ</a><span>📍 ایران</span></div></div><div class="wrap copy">© 2026 SHAYAN.CPU — تمامی حقوق محفوظ است.</div></footer>
+
+<div class="overlay" id="overlay"><div class="modal"><h2>🛒 سبد خرید</h2><div id="cartItems"></div><div id="cartTotal" style="font-weight:bold;color:#087cf0;font-size:20px;margin:18px 0"></div><div class="form"><input id="name" placeholder="نام و نام خانوادگی"><input id="phone" placeholder="شماره تماس"><textarea id="address" placeholder="آدرس کامل"></textarea><textarea id="note" placeholder="توضیحات سفارش (اختیاری)"></textarea></div><button class="btn" onclick="sendWhatsApp()">📱 ثبت سفارش در واتساپ</button> <button class="btn close" onclick="closeCart()">بستن</button></div></div>
+
+<script>
+let cart=JSON.parse(localStorage.getItem("cart")||"[]");
+function save(){localStorage.setItem("cart",JSON.stringify(cart));updateNum()}
+function updateNum(){document.getElementById("cartNum").textContent=cart.reduce((s,x)=>s+Number(x.quantity||0),0)}
+function addCart(name,price){let x=cart.find(a=>a.name===name);if(x)x.quantity++;else cart.push({name,price,quantity:1});save();alert("محصول به سبد خرید اضافه شد ✅")}
+function openCart(){renderCart();document.getElementById("overlay").style.display="block"}
+function closeCart(){document.getElementById("overlay").style.display="none"}
+function renderCart(){
+ let box=document.getElementById("cartItems"),total=0;
+ if(!cart.length){box.innerHTML='<div class="empty">سبد خرید خالی است</div>';document.getElementById("cartTotal").textContent="جمع: 0 تومان";return}
+ box.innerHTML="";
+ cart.forEach((x,i)=>{let t=Number(x.price)*Number(x.quantity);total+=t;box.innerHTML+=`<div class="cartrow"><div><b>${x.name}</b><br>${Number(x.price).toLocaleString()} تومان</div><div class="qty"><button onclick="changeQty(${i},-1)">−</button> ${x.quantity} <button onclick="changeQty(${i},1)">+</button></div><button onclick="removeItem(${i})" style="border:0;background:#ef3158;color:#fff;padding:7px;border-radius:6px">حذف</button></div>`});
+ document.getElementById("cartTotal").textContent="جمع کل: "+total.toLocaleString()+" تومان"
+}
+function changeQty(i,n){cart[i].quantity+=n;if(cart[i].quantity<=0)cart.splice(i,1);save();renderCart()}
+function removeItem(i){cart.splice(i,1);save();renderCart()}
+function sendWhatsApp(){
+ if(!cart.length){alert("سبد خرید خالی است");return}
+ let name=document.getElementById("name").value.trim(),phone=document.getElementById("phone").value.trim(),address=document.getElementById("address").value.trim(),note=document.getElementById("note").value.trim();
+ if(!name||!phone||!address){alert("لطفاً نام، شماره تماس و آدرس را وارد کنید.");return}
+ let total=0,msg=["سلام SHAYAN.CPU 👋","","🛒 سفارش جدید","━━━━━━━━━━━━━━",""];
+ cart.forEach((x,i)=>{let t=Number(x.price)*Number(x.quantity);total+=t;msg.push("📦 "+x.name,"🔢 تعداد: "+x.quantity,"💰 قیمت واحد: "+Number(x.price).toLocaleString()+" تومان","💵 مبلغ: "+t.toLocaleString()+" تومان","")});
+ msg.push("━━━━━━━━━━━━━━","💰 مبلغ کل: "+total.toLocaleString()+" تومان","","👤 نام: "+name,"📞 شماره تماس: "+phone,"","📍 آدرس:",address,"","📝 توضیحات:",note||"ندارد");
+ window.location.href="https://wa.me/989012384436?text="+encodeURIComponent(msg.join("\n"))
+}
+function searchProducts(){let q=document.getElementById("search").value.trim().toLowerCase();document.querySelectorAll(".product").forEach(p=>p.style.display=p.innerText.toLowerCase().includes(q)?"":"none")}
+updateNum()
+</script>
+</body>
+</html>
