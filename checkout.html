@@ -2,7 +2,6 @@
 <html lang="fa" dir="rtl">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -42,19 +41,17 @@ textarea{
     background:#070b12;
     color:white;
     font-size:16px;
-    outline:1px solid #333;
 }
 
 textarea{
     height:120px;
-    resize:none;
 }
 
 button{
     width:100%;
-    margin-top:15px;
     padding:15px;
-    border:none;
+    margin-top:15px;
+    border:0;
     border-radius:10px;
     background:#008cff;
     color:white;
@@ -62,31 +59,25 @@ button{
     cursor:pointer;
 }
 
-button:hover{
-    background:#00aaff;
-}
-
-.back{
-    display:inline-block;
-    margin-top:20px;
-    color:#00aaff;
+.whatsapp{
+    display:block;
+    margin-top:15px;
+    padding:15px;
+    background:#25D366;
+    color:white;
     text-decoration:none;
+    border-radius:10px;
+    font-size:18px;
 }
 
 </style>
-
 </head>
 
-
 <body>
-
 
 <div class="container">
 
 <h1>🛒 ثبت سفارش</h1>
-
-<p>لطفاً اطلاعات خود را وارد کنید.</p>
-
 
 <input
 type="text"
@@ -94,56 +85,50 @@ id="name"
 placeholder="نام و نام خانوادگی"
 >
 
-
 <input
 type="tel"
 id="phone"
 placeholder="شماره تماس"
 >
 
-
 <textarea
 id="address"
 placeholder="آدرس کامل"
 ></textarea>
 
-
 <textarea
 id="note"
-placeholder="توضیحات سفارش (اختیاری)"
+    placeholder="توضیحات سفارش"
 ></textarea>
 
 
-<button
-type="button"
-onclick="sendOrder()"
->
-ارسال سفارش در واتساپ
+<button type="button" onclick="testOrder()">
+ارسال سفارش
 </button>
 
 
 <a
-class="back"
-href="lavazem.html"
->بازگشت به فروشگاه
+class="whatsapp"
+href="https://wa.me/989012384436"
+target="_blank"
+>
+:speech_balloon: تست واتساپ
 </a>
-
 
 </div>
 
 
-
 <script>
 
-function sendOrder(){
+function testOrder(){
 
-    let name = document.getElementById("name").value.trim();
+    let name = document.getElementById("name").value;
 
-    let phone = document.getElementById("phone").value.trim();
+    let phone = document.getElementById("phone").value;
 
-    let address = document.getElementById("address").value.trim();
+    let address = document.getElementById("address").value;
 
-    let note = document.getElementById("note").value.trim();
+    let note = document.getElementById("note").value;
 
 
     if(name === ""  phone === ""  address === ""){
@@ -155,33 +140,23 @@ function sendOrder(){
     }
 
 
-    // شماره واتساپ SHAYAN.CPU
-    let whatsapp = "989012384436";
-
-
     let message =
-        "سلام SHAYAN.CPU\n\n" +
-        "🛒 سفارش جدید\n\n" +
-        ":bust_in_silhouette: نام: " + name + "\n" +
-        ":telephone_receiver: شماره تماس: " + phone + "\n" +
-        ":round_pushpin: آدرس: " + address + "\n" +
-        ":memo: توضیحات: " + note;
+        "سلام SHAYAN.CPU%0A%0A" +
+        "🛒 سفارش جدید%0A%0A" +
+        "نام: " + encodeURIComponent(name) + "%0A" +
+        "شماره تماس: " + encodeURIComponent(phone) + "%0A" +
+        "آدرس: " + encodeURIComponent(address) + "%0A" +
+        "توضیحات: " + encodeURIComponent(note);
 
 
-    let url =
-        "https://wa.me/" +
-        whatsapp +
-        "?text=" +
-        encodeURIComponent(message);
-
-
-    window.location.href = url;
+    window.open(
+        "https://wa.me/989012384436?text=" + message,
+        "_blank"
+    );
 
 }
 
 </script>
 
-
 </body>
-
 </html>
