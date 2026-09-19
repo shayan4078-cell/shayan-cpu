@@ -2,6 +2,7 @@
 <html lang="fa" dir="rtl">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -18,9 +19,9 @@ body{
 }
 
 .container{
-    max-width:600px;
+    max-width:650px;
     margin:40px auto;
-    padding:30px;
+    padding:25px;
     background:#101722;
     border:1px solid #008cff;
     border-radius:20px;
@@ -30,13 +31,31 @@ h1{
     color:#00aaff;
 }
 
+#order{
+    margin:20px 0;
+    padding:15px;
+    background:#070b12;
+    border-radius:12px;
+    text-align:right;
+}
+.product{
+    padding:12px;
+    margin:8px 0;
+    border-bottom:1px solid #333;
+}
+
+.total{
+    color:#00ff88;
+    font-size:20px;
+    font-weight:bold;
+}
+
 input,
-textarea,
-select{
+textarea{
     width:100%;
     box-sizing:border-box;
-    margin:10px 0;
-    padding:15px;
+    margin:8px 0;
+    padding:14px;
     border:0;
     border-radius:10px;
     background:#070b12;
@@ -60,43 +79,39 @@ button{
     cursor:pointer;
 }
 
-button:hover{
-    opacity:0.9;
+.back{
+    display:block;
+    margin-top:20px;
+    color:#00aaff;
+    text-decoration:none;
 }
 
 </style>
+
 </head>
 
+
 <body>
+
 
 <div class="container">
 
 <h1>🛒 ثبت سفارش</h1>
 
-<p>اطلاعات سفارش خود را وارد کنید</p>
 
+<div id="order">
 
-<input
-type="text"
-id="product"
-placeholder="نام محصول"
->
+<h2>محصولات سفارش</h2>
 
+<div id="products">
+در حال بارگذاری...
+</div>
 
-<input
-type="number"
-id="price"
-placeholder="قیمت محصول"
->
+<div class="total" id="total">
+جمع: 0 تومان
+</div>
 
-
-<input
-type="number"
-id="quantity"
-value="1"
-min="1"
-placeholder="تعداد"
->
+</div>
 
 
 <input
@@ -111,6 +126,8 @@ type="tel"
 id="phone"
 placeholder="شماره تماس"
 >
+
+
 <textarea
 id="address"
 placeholder="آدرس کامل"
@@ -121,92 +138,177 @@ placeholder="آدرس کامل"
 id="note"
 placeholder="توضیحات سفارش (اختیاری)"
 ></textarea>
-
-
-<button type="button" onclick="sendOrder()">
+<button
+type="button"
+onclick="sendOrder()"
+>
 :iphone: ارسال سفارش در واتساپ
 </button>
+
+
+<a
+href="lavazem.html"
+class="back"
+>
+بازگشت به فروشگاه
+</a>
+
 
 </div>
 
 
+
 <script>
 
-function sendOrder(){
 
-    let product =
-        document.getElementById("product").value.trim();
-
-    let price =
-        document.getElementById("price").value.trim();
-
-    let quantity =
-        document.getElementById("quantity").value.trim();
-
-    let name =
-        document.getElementById("name").value.trim();
-
-    let phone =
-        document.getElementById("phone").value.trim();
-
-    let address =
-        document.getElementById("address").value.trim();
-
-    let note =
-        document.getElementById("note").value.trim();
+let cart =
+JSON.parse(localStorage.getItem("cart")) || [];
 
 
-    if(
-        product === "" ||
-        price === "" ||
-        quantity === "" ||
-        name === "" ||
-        phone === "" ||
-        address === ""
-    ){
+function showOrder(){
 
-        alert("لطفاً تمام اطلاعات ضروری را وارد کنید.");
+    let products =
+        document.getElementById("products");
+
+    let total =
+        document.getElementById("total");
+
+
+    products.innerHTML = "";
+
+    let sum = 0;
+
+
+    if(cart.length === 0){
+
+        products.innerHTML =
+            "<p>سبد خرید خالی است.</p>";
+
+        total.innerHTML =
+            "جمع: 0 تومان";
 
         return;
 
     }
 
 
-    let total =
-        Number(price) * Number(quantity);
+    cart.forEach(function(product){
+
+        products.innerHTML +=
+
+        "<div class='product'>" +
+
+        "<b>" +
+        product.name +
+        "</b><br>" +
+
+        "قیمت: " +
+        product.price.toLocaleString() +
+        " تومان" +
+
+        "</div>";
 
 
-    let message =
+        sum += Number(product.price);
+
+    });
+
+
+    total.innerHTML =
+        "جمع: " +
+        sum.toLocaleString() +
+        " تومان";
+
+}
+
+
+function sendOrder(){
+
+    if(cart.length === 0){
+
+        alert("سبد خرید شما خالی است.");
+
+        return;
+
+    }
+
+
+    let name =
+        document.getElementById("name").value.trim();
+
+
+    let phone =
+        document.getElementById("phone").value.trim();
+
+
+    let address =
+        document.getElementById("address").value.trim();
+
+
+    let note =
+        document.getElementById("note").value.trim();
+
+
+    if(
+        name === "" ||
+        phone === "" ||
+        address === ""
+    ){
+
+        alert(
+            "لطفاً نام، شماره تماس و آدرس را وارد کنید."
+        );
+
+        return;
+
+    }
+let message =
         "سلام SHAYAN.CPU :wave:\n\n" +
 
         "🛒 سفارش جدید\n" +
-        "━━━━━━━━━━━━━━\n\n" +
+        "━━━━━━━━━━━━━━\n\n";
 
-        ":package: محصول: " + product + "\n" +
 
-        ":moneybag: قیمت واحد: " +
-        Number(price).toLocaleString("fa-IR") +
-        " تومان\n" +
+    let total = 0;
 
-        ":1234: تعداد: " + quantity + "\n" +
 
-        ":dollar: مبلغ کل: " +
-        total.toLocaleString("fa-IR") +
+    cart.forEach(function(product,index){
+
+        message +=
+
+            (index + 1) +
+            ". " +
+            product.name +
+            " - " +
+            Number(product.price).toLocaleString() +
+            " تومان\n";
+
+
+        total += Number(product.price);
+
+    });
+
+
+    message +=
+
+        "\n:moneybag: مبلغ کل: " +
+        total.toLocaleString() +
         " تومان\n\n" +
 
-        ":bust_in_silhouette: نام: " + name + "\n" +
+        ":bust_in_silhouette: نام: " +
+        name +
+        "\n" +
 
-        ":telephone_receiver: شماره تماس: " + phone + "\n\n" +
+        ":telephone_receiver: شماره تماس: " +
+        phone +
+        "\n\n" +
 
         ":round_pushpin: آدرس:\n" +
-        address + "\n\n" +
+        address +
+        "\n\n" +
 
         ":memo: توضیحات:\n" +
-        (note === "" ? "ندارد" : note) +
-
-        "\n\n━━━━━━━━━━━━━━\n" +
-
-        "SHAYAN.CPU";
+        (note === "" ? "ندارد" : note);
 
 
     let url =
@@ -214,11 +316,16 @@ function sendOrder(){
         encodeURIComponent(message);
 
 
-    window.open(url, "_blank");
+    window.open(url,"_blank");
 
 }
 
+
+showOrder();
+
 </script>
 
+
 </body>
+
 </html>
