@@ -74,8 +74,14 @@ button:hover{
     border-radius:15px;
 }
 
+.remove{
+    background:#e53935;
+    margin-right:10px;
+    padding:7px 12px;
+}
+
 .checkout{
-    display:inline-block;
+    display:block;
     margin-top:20px;
     padding:14px 25px;
     background:#25D366;
@@ -84,9 +90,9 @@ button:hover{
     border-radius:10px;
 }
 
-.remove{
+.clear{
     background:#e53935;
-    margin-right:10px;
+    margin-top:15px;
 }
 
 </style>
@@ -103,7 +109,8 @@ button:hover{
 <div class="products">
 
 
-<div class="card">
+<!-- محصول اول -->
+    <div class="card">
 
 <img src="charger.jpg" alt="شارژر فست">
 
@@ -118,6 +125,7 @@ button:hover{
 </div>
 
 
+<!-- محصول دوم -->
 
 <div class="card">
 
@@ -134,6 +142,7 @@ button:hover{
 </div>
 
 
+<!-- محصول سوم -->
 
 <div class="card">
 
@@ -142,6 +151,7 @@ button:hover{
 <h2>قاب موبایل</h2>
 
 <p class="price">300000 تومان</p>
+
 <button onclick="addToCart('قاب موبایل',300000)">
 افزودن به سبد خرید
 </button>
@@ -153,8 +163,9 @@ button:hover{
 
 
 
-<div id="cart">
+<!-- سبد خرید -->
 
+<div id="cart">
 <h2>🛒 سبد خرید</h2>
 
 <div id="cartItems">
@@ -165,6 +176,7 @@ button:hover{
 جمع: 0 تومان
 </h3>
 
+
 <a
 href="checkout.html"
 class="checkout"
@@ -172,35 +184,96 @@ class="checkout"
 ادامه و ثبت سفارش
 </a>
 
+
+<button
+class="clear"
+onclick="clearCart()"
+>
+خالی کردن سبد
+</button>
+
 </div>
 
 
 
 <script>
 
-let cart = [];
 
+/* گرفتن سبد ذخیره شده */
+
+let cart =
+JSON.parse(localStorage.getItem("cart")) || [];
+
+
+
+/* اضافه کردن محصول */
 
 function addToCart(name,price){
 
     cart.push({
+
         name:name,
+
         price:price
+
     });
+
+
+    saveCart();
 
     showCart();
 
+
+    alert(
+        name +
+        " به سبد خرید اضافه شد."
+    );
+
 }
 
+
+
+/* ذخیره سبد در مرورگر */
+
+function saveCart(){
+
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+
+}
+
+
+
+/* حذف محصول */
 
 function removeFromCart(index){
 
     cart.splice(index,1);
 
+    saveCart();
+
+    showCart();
+    }
+
+
+
+/* خالی کردن سبد */
+
+function clearCart(){
+
+    cart = [];
+
+    saveCart();
+
     showCart();
 
 }
 
+
+
+/* نمایش سبد */
 
 function showCart(){
 
@@ -209,6 +282,7 @@ function showCart(){
 
     let total =
         document.getElementById("total");
+
 
     items.innerHTML = "";
 
@@ -238,19 +312,25 @@ function showCart(){
 
         " - " +
 
-        product.price.toLocaleString() +
+        Number(product.price)
+        .toLocaleString() +
 
         " تومان " +
 
-        "<button class='remove' onclick='removeFromCart(" +
+        "<button class='remove' " +
 
+        "onclick='removeFromCart(" +
         index +
+        ")'>" +
 
-        ")'>حذف</button>" +
+        "حذف" +
+
+        "</button>" +
 
         "</p>";
 
-        sum += product.price;
+
+        sum += Number(product.price);
 
     });
 
@@ -261,6 +341,12 @@ function showCart(){
         " تومان";
 
 }
+
+
+
+/* اجرای اولیه */
+
+showCart();
 
 </script>
 
