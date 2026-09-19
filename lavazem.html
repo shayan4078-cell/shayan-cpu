@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>فروشگاه لوازم جانبی | SHAYAN.CPU</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:#070b12;color:white}
+header{padding:25px 15px;background:#101722;border-bottom:1px solid #008cff;text-align:center}header h1{color:#00aaff;margin:5px}
+.search{max-width:600px;margin:20px auto;padding:0 15px}.search input{width:100%;padding:15px;border:1px solid #008cff;border-radius:12px;background:#070b12;color:white;font-size:16px}
+.categories{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;padding:10px 15px 25px}.categories button{padding:10px 18px;border:1px solid #008cff;border-radius:10px;background:#101722;color:white;cursor:pointer}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;max-width:1100px;margin:auto;padding:20px}
+.card{background:#101722;border:1px solid #008cff;border-radius:16px;padding:15px;text-align:center}.card img{width:100%;height:220px;object-fit:cover;border-radius:12px}.card h2{font-size:20px}
+.price{color:#00ff88;font-size:20px;font-weight:bold}.card button{width:100%;padding:12px;border:0;border-radius:10px;background:#008cff;color:white;cursor:pointer;font-size:16px}
+#cart{max-width:800px;margin:30px auto;padding:25px;background:#101722;border:1px solid #008cff;border-radius:16px}.cart-title{display:flex;justify-content:space-between;align-items:center}
+#cartCount{background:#e53935;padding:7px 12px;border-radius:50px}.cart-item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:15px 0;border-bottom:1px solid #333}
+.quantity{display:flex;align-items:center;gap:8px}.quantity button{width:35px;height:35px;border:0;border-radius:8px;background:#008cff;color:white;cursor:pointer;font-size:18px}.remove{background:#e53935!important}
+.total{margin-top:20px;color:#00ff88;font-size:22px;font-weight:bold}.checkout{display:block;margin-top:20px;padding:15px;background:#25D366;color:white;text-decoration:none;border-radius:10px;text-align:center;font-size:18px}
+.clear{width:100%;margin-top:10px;padding:12px;border:0;border-radius:10px;background:#e53935;color:white;cursor:pointer}
+@media(max-width:600px){.products{grid-template-columns:1fr}.cart-item{flex-direction:column;align-items:stretch;text-align:center}}
+</style>
+</head>
+<body>
+<header><h1>🛍️ SHAYAN.CPU</h1><p>فروشگاه لوازم جانبی موبایل</p></header>
+<div class="search"><input type="text" id="search" placeholder="🔎 جستجوی محصول..." oninput="searchProducts()"></div>
+<div class="categories">
+<button onclick="filterProducts('all')">همه</button>
+<button onclick="filterProducts('charger')">شارژر</button>
+<button onclick="filterProducts('cable')">کابل</button>
+<button onclick="filterProducts('case')">قاب</button>
+</div>
+<div class="products" id="products">
+<div class="card" data-name="شارژر فست" data-category="charger"><img src="charger.jpg" alt="شارژر فست"><h2>شارژر فست</h2><p class="price">500000 تومان</p><button onclick="addToCart('شارژر فست',500000)">افزودن به سبد خرید</button></div>
+<div class="card" data-name="کابل شارژ" data-category="cable"><img src="cable.jpg" alt="کابل شارژ"><h2>کابل شارژ</h2><p class="price">200000 تومان</p><button onclick="addToCart('کابل شارژ',200000)">افزودن به سبد خرید</button></div>
+<div class="card" data-name="قاب موبایل" data-category="case"><img src="case.jpg" alt="قاب موبایل"><h2>قاب موبایل</h2><p class="price">300000 تومان</p><button onclick="addToCart('قاب موبایل',300000)">افزودن به سبد خرید</button></div>
+</div>
+<div id="cart">
+<div class="cart-title"><h2>🛒 سبد خرید</h2><span id="cartCount">0 کالا</span></div>
+<div id="cartItems">سبد خرید خالی است</div><div class="total" id="total">جمع: 0 تومان</div>
+<a href="checkout.html" class="checkout">ادامه و ثبت سفارش</a>
+<button class="clear" onclick="clearCart()">🗑️ خالی کردن سبد</button>
+</div>
+<script>
+let cart=JSON.parse(localStorage.getItem("cart"))||[];
+function saveCart(){localStorage.setItem("cart",JSON.stringify(cart))}
+function addToCart(name,price){let existing=cart.find(item=>item.name===name);if(existing){existing.quantity++}else{cart.push({name:name,price:price,quantity:1})}saveCart();showCart()}
+function increase(index){cart[index].quantity++;saveCart();showCart()}
+function decrease(index){cart[index].quantity--;if(cart[index].quantity<=0){cart.splice(index,1)}saveCart();showCart()}
+function removeItem(index){cart.splice(index,1);saveCart();showCart()}
+function clearCart(){cart=[];saveCart();showCart()}
+function showCart(){
+let items=document.getElementById("cartItems"),total=document.getElementById("total"),count=document.getElementById("cartCount");items.innerHTML="";
+if(cart.length===0){items.innerHTML="<p>سبد خرید خالی است</p>";total.innerHTML="جمع: 0 تومان";count.innerHTML="0 کالا";return}
+let sum=0,itemCount=0;
+cart.forEach(function(product,index){let productTotal=Number(product.price)*Number(product.quantity);sum+=productTotal;itemCount+=Number(product.quantity);
+items.innerHTML+=`<div class="cart-item"><div><strong>${product.name}</strong><br>${Number(product.price).toLocaleString()} تومان</div><div class="quantity"><button onclick="decrease(${index})">−</button><strong>${product.quantity}</strong><button onclick="increase(${index})">+</button></div><div>${productTotal.toLocaleString()} تومان</div><button class="quantity button remove" onclick="removeItem(${index})">حذف</button></div>`});
+total.innerHTML="جمع: "+sum.toLocaleString()+" تومان";count.innerHTML=itemCount+" کالا"}
+function searchProducts(){let text=document.getElementById("search").value.toLowerCase();document.querySelectorAll(".card").forEach(function(card){let name=card.getAttribute("data-name").toLowerCase();card.style.display=name.includes(text)?"":"none"})}
+function filterProducts(category){document.querySelectorAll(".card").forEach(function(card){let c=card.getAttribute("data-category");card.style.display=(category==="all"||c===category)?"":"none"})}
+showCart();
+</script>
+</body>
+</html>
