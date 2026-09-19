@@ -8,22 +8,20 @@
 
 <title>لوازم جانبی | SHAYAN.CPU</title>
 
-
 <style>
 
 body{
     margin:0;
-    font-family:Tahoma;
+    font-family:Tahoma,Arial,sans-serif;
     background:#070b12;
     color:white;
     text-align:center;
 }
 
-
-h1,h2{
+h1{
     color:#00aaff;
+    margin-top:40px;
 }
-
 
 .products{
     display:flex;
@@ -33,7 +31,6 @@ h1,h2{
     padding:30px;
 }
 
-
 .card{
     width:250px;
     background:#101722;
@@ -42,7 +39,6 @@ h1,h2{
     padding:15px;
 }
 
-
 .card img{
     width:100%;
     height:220px;
@@ -50,12 +46,10 @@ h1,h2{
     border-radius:12px;
 }
 
-
 .price{
     color:#00ff88;
     font-size:20px;
 }
-
 
 button{
     background:#008cff;
@@ -64,24 +58,46 @@ button{
     padding:12px 20px;
     border-radius:10px;
     cursor:pointer;
+    font-size:16px;
 }
 
+button:hover{
+    background:#00aaff;
+}
 
 #cart{
-    margin:30px;
+    margin:30px auto;
     padding:20px;
+    max-width:700px;
     background:#101722;
+    border:1px solid #008cff;
     border-radius:15px;
 }
 
+.checkout{
+    display:inline-block;
+    margin-top:20px;
+    padding:14px 25px;
+    background:#25D366;
+    color:white;
+    text-decoration:none;
+    border-radius:10px;
+}
+
+.remove{
+    background:#e53935;
+    margin-right:10px;
+}
 
 </style>
 
 </head>
+
+
 <body>
 
 
-<h1>لوازم جانبی موبایل</h1>
+<h1>🛍️ لوازم جانبی موبایل</h1>
 
 
 <div class="products">
@@ -89,7 +105,7 @@ button{
 
 <div class="card">
 
-<img src="charger.jpg">
+<img src="charger.jpg" alt="شارژر فست">
 
 <h2>شارژر فست</h2>
 
@@ -105,7 +121,7 @@ button{
 
 <div class="card">
 
-<img src="cable.jpg">
+<img src="cable.jpg" alt="کابل شارژ">
 
 <h2>کابل شارژ</h2>
 
@@ -119,15 +135,13 @@ button{
 
 
 
-
 <div class="card">
 
-<img src="case.jpg">
+<img src="case.jpg" alt="قاب موبایل">
 
 <h2>قاب موبایل</h2>
 
 <p class="price">300000 تومان</p>
-
 <button onclick="addToCart('قاب موبایل',300000)">
 افزودن به سبد خرید
 </button>
@@ -142,21 +156,21 @@ button{
 <div id="cart">
 
 <h2>🛒 سبد خرید</h2>
-<a href="checkout.html">
-<button>
-ادامه و ثبت سفارش
-</button>
-</a>
 
 <div id="cartItems">
-    سبد خرید خالی است
+سبد خرید خالی است
 </div>
-
 
 <h3 id="total">
 جمع: 0 تومان
 </h3>
 
+<a
+href="checkout.html"
+class="checkout"
+>
+ادامه و ثبت سفارش
+</a>
 
 </div>
 
@@ -164,74 +178,91 @@ button{
 
 <script>
 
-
-let cart=[];
+let cart = [];
 
 
 function addToCart(name,price){
 
+    cart.push({
+        name:name,
+        price:price
+    });
 
-cart.push({
-
-name:name,
-
-price:price
-
-});
-
-
-showCart();
-
+    showCart();
 
 }
 
+
+function removeFromCart(index){
+
+    cart.splice(index,1);
+
+    showCart();
+
+}
 
 
 function showCart(){
 
+    let items =
+        document.getElementById("cartItems");
 
-let items=document.getElementById("cartItems");
+    let total =
+        document.getElementById("total");
 
-let total=document.getElementById("total");
+    items.innerHTML = "";
 
-
-items.innerHTML="";
-
-
-let sum=0;
-
+    let sum = 0;
 
 
-cart.forEach(function(product,index){
+    if(cart.length === 0){
+
+        items.innerHTML =
+            "سبد خرید خالی است";
+
+        total.innerHTML =
+            "جمع: 0 تومان";
+
+        return;
+
+    }
 
 
-items.innerHTML += 
-"<p>"+product.name+" - "+product.price.toLocaleString()+" تومان</p>";
+    cart.forEach(function(product,index){
+
+        items.innerHTML +=
+
+        "<p>" +
+
+        product.name +
+
+        " - " +
+
+        product.price.toLocaleString() +
+
+        " تومان " +
+
+        "<button class='remove' onclick='removeFromCart(" +
+
+        index +
+
+        ")'>حذف</button>" +
+
+        "</p>";
+
+        sum += product.price;
+
+    });
 
 
-sum += product.price;
-
-
-});
-
-
-
-if(cart.length==0){
-
-items.innerHTML="سبد خرید خالی است";
+    total.innerHTML =
+        "جمع: " +
+        sum.toLocaleString() +
+        " تومان";
 
 }
-
-
-
-total.innerHTML="جمع: "+sum.toLocaleString()+" تومان";
-
-
-}
-
 
 </script>
-
 
 
 </body>
