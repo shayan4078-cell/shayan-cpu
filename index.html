@@ -31,7 +31,12 @@ footer{background:#06182c;color:#d3e0ee;margin-top:35px;padding:38px 0 15px}.foo
 .overlay{display:none;position:fixed;inset:0;background:#0009;z-index:20;padding:20px;overflow:auto}.modal{background:#fff;max-width:700px;margin:30px auto;border-radius:18px;padding:24px}.modal h2{margin-top:0;color:var(--b)}.cartrow{display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid #e5e7eb;padding:13px 0}.qty button{border:0;background:var(--b);color:#fff;width:30px;height:30px;border-radius:6px}.form input,.form textarea{width:100%;margin:7px 0;padding:13px;border:1px solid #ddd;border-radius:9px;font-family:inherit}.form textarea{height:90px}.close{background:#eee;color:#222}.empty{text-align:center;padding:30px;color:#777}
 @media(max-width:900px){.features,.cats{grid-template-columns:repeat(3,1fr)}.products{grid-template-columns:repeat(3,1fr)}.chip{opacity:.25}.logo{min-width:auto}.headLinks{gap:8px}}
 @media(max-width:650px){.top .wrap{font-size:8px}.head{flex-wrap:wrap;padding:10px 0}.logo{width:100%}.search{flex-basis:100%;order:3}.headLinks{position:absolute;left:4%;top:48px}.heroText{padding:35px 22px}.heroText h1{font-size:29px}.chip{width:190px;height:150px;top:155px;right:20%}.features,.cats{grid-template-columns:repeat(2,1fr)}.banners,.lower{grid-template-columns:1fr}.products{grid-template-columns:repeat(2,1fr)}.whygrid{grid-template-columns:1fr 1fr}.why h2{grid-column:1/-1}.subscribe{flex-direction:column;align-items:stretch}.subscribe input{width:100%}.foot{grid-template-columns:1fr 1fr}}
-</style>
+.pimg img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  border-radius:10px;
+}</style>
 </head>
 <body>
 
@@ -66,7 +71,9 @@ footer{background:#06182c;color:#d3e0ee;margin-top:35px;padding:38px 0 15px}.foo
 <div class="product"><span class="heart">♡</span><div class="pimg">🔧</div><h3>ست پیچ‌گوشتی ۲۳ عددی حرفه‌ای</h3><div class="stars">★★★★★</div><div class="price">۱,۲۵۰,۰۰۰ تومان</div><button class="add" onclick="addCart('ست پیچ‌گوشتی ۲۳ عددی',1250000)">🛒 افزودن به سبد خرید</button></div>
 <div class="product"><span class="heart">♡</span><div class="pimg">🧠</div><h3>پردازنده Intel Core i5</h3><div class="stars">★★★★★</div><div class="price">۷,۸۰۰,۰۰۰ تومان</div><button class="add" onclick="addCart('پردازنده Intel Core i5',7800000)">🛒 افزودن به سبد خرید</button></div>
 <div class="product"><span class="heart">♡</span><div class="pimg">📱</div><h3>تاچ و ال سی دی موبایل</h3><div class="stars">★★★★★</div><div class="price">۲,۹۵۰,۰۰۰ تومان</div><button class="add" onclick="addCart('تاچ و ال سی دی موبایل',2950000)">🛒 افزودن به سبد خرید</button></div>
-<div class="product"><span class="heart">♡</span><div class="pimg">🎮</div><h3>کارت گرافیک ASUS RTX 3060</h3><div class="stars">★★★★★</div><div class="price">۱۷,۵۰۰,۰۰۰ تومان</div><button class="add" onclick="addCart('کارت گرافیک ASUS RTX 3060',17500000)">🛒 افزودن به سبد خرید</button></div>
+<div class="product"><span class="heart">♡</span><div class="pimg">
+  <img src="charger.jpg" alt="شارژر فست شارژ">
+</div><h3>کارت گرافیک ASUS RTX 3060</h3><div class="stars">★★★★★</div><div class="price">۱۷,۵۰۰,۰۰۰ تومان</div><button class="add" onclick="addCart('کارت گرافیک ASUS RTX 3060',17500000)">🛒 افزودن به سبد خرید</button></div>
 <div class="product"><span class="heart">♡</span><div class="pimg">🔋</div><h3>باتری موبایل Samsung A52</h3><div class="stars">★★★★★</div><div class="price">۹۶۰,۰۰۰ تومان</div><button class="add" onclick="addCart('باتری Samsung A52',960000)">🛒 افزودن به سبد خرید</button></div>
 <div class="product"><span class="heart">♡</span><div class="pimg">🔌</div><h3>شارژر فست شارژ ۲۵ وات</h3><div class="stars">★★★★★</div><div class="price">۴۸۰,۰۰۰ تومان</div><button class="add" onclick="addCart('شارژر فست شارژ ۲۵ وات',480000)">🛒 افزودن به سبد خرید</button></div>
 </section>
